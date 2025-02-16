@@ -1,16 +1,19 @@
 import React from "react";
+import { useState } from "react";
+import "./App.css";
 
 function App() {
-  const users = ["山田", "佐々木", "島田"];
+  const [inputValue, setInputValue] = useState("");
+
+  const handlechange = (e) => {
+    setInputValue(e.target.value);
+  };
 
   return (
     <>
-      <h1>ユーザーリスト</h1>
-      <ul>
-        {users.map((user,index)=>{
-          return <li key={index}>{user}</li>
-        })}
-      </ul>
+      <h1>入力フィールド</h1>
+      <input type="text" value={inputValue} onChange={handlechange} placeholder="ここに入力" />
+      <p>入力された値：{inputValue}</p>
     </>
   );
 }
